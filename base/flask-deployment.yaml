@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jymin-flask-backend
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jymin-flask-backend
+  template:
+    metadata:
+      labels:
+        app: jymin-flask-backend
+    spec:
+      containers:
+        - name: jymin-flask-backend
+          image: 759320821027.dkr.ecr.ap-northeast-2.amazonaws.com/jymin-flask-backend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 250m
+            limits:
+              cpu: 500m
